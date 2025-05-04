@@ -121,8 +121,8 @@ const uploadFile = async ({
         write: true,
         create: true,
       }); */
-      const command = new Deno.Command(NEXTFLOW_PATH, {
-        args: command_args,
+      const command = new Deno.run({
+        cmd: [NEXTFLOW_PATH, ...command_args],
         stdin: "piped",
         stdout: "piped",
         cwd: PIPELINE_DIR
@@ -201,15 +201,18 @@ const runNextflow = async (
     write: true,
     create: true,
   }); */
-  const command = new Deno.Command(Deno.execPath(), {
-    args: command_args,
+  const command = new Deno.run({
+    cmd: [Deno.execPath(), ...command_args],
     stdin: "piped",
     stdout: "piped",
   });
   const child = command.spawn();
-  child.stdout.pipeTo(
-    Deno.openSync("output.log", { write: true, create: true }).writable,
-  );
+  // child.stdout.pipeTo(
+  //   Deno.openSync("output.log", { write: true, create: true }).writable,
+  // );
+  const file = Deno.openSync("output.log", { write: true, create: true });
+  await Deno.copy(process.stdout, file);
+  file.close();
   child.stdin.close();
   const status = await child.status;
   console.log(status);
