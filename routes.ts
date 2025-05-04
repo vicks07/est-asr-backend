@@ -10,11 +10,11 @@ import { deleteResults } from "./controllers/deleteResults.ts";
 
 const router = new Router();
 router
-    .get("/", async (req, res) => {
-        res.status = 200;
-        res.body = {
-            success: false,
-            msg: "Connected",
+    .get("/", (context) => {
+        context.response.status = 200;
+        context.response.body = {
+            success: true,
+            msg: "Hello World",
         };
     })
     .post("/upload", uploadFile)
