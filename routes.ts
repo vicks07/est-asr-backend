@@ -10,7 +10,7 @@ import { deleteResults } from "./controllers/deleteResults.ts";
 
 const router = new Router();
 router
-    .get("/", (context) => {
+    .get("/hello", (context) => {
         context.response.status = 200;
         context.response.body = {
             success: true,
