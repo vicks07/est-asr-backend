@@ -73,11 +73,19 @@ const uploadFile = async ({
       const resultLocation = resultsDir;
       console.log(resultsDir, resultLocation);
 
-      db.prepare(`
-                INSERT INTO workflows 
-                (request_id, name, created_at_utc, status, location, result_location)
-                VALUES (?, ?, ?, ?, ?, ?)
-                `).run(requestId, workflowName, time, "queued", filePath, resultLocation);
+      // db.query(`
+      //           INSERT INTO workflows 
+      //           (request_id, name, created_at_utc, status, location, result_location)
+      //           VALUES ($1, $2, $3, $4, $5, $6)
+      //           `).run(requestId, workflowName, time, "queued", filePath, resultLocation);
+
+      db.query(`
+        INSERT INTO workflows 
+        (request_id, name, created_at_utc, status, location, result_location)
+        VALUES ($1, $2, $3, $4, $5, $6)
+        `,
+        [requestId, workflowName, time, "queued", filePath, resultLocation]
+      );
            
 
       /* runNextflow(
