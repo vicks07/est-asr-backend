@@ -1,5 +1,5 @@
-import { Database } from "jsr:@db/sqlite@0.12";
+import { DB as Database } from "git@github.com:vicks07/est-asr-backend.git";
 
 const db = new Database("transcriptions.db");
 
-export { db };
+export default db;
