@@ -127,12 +127,12 @@ const uploadFile = async ({
         stdout: "piped",
         cwd: PIPELINE_DIR
       });
-      const child = command.spawn();
+      // const child = command.spawn();
       /* child.stdout.pipeTo(
         Deno.openSync("output.log", { write: true, create: true }).writable,
       );
       child.stdin.close(); */
-      const status = await child.status;
+      const status = await command.status();
       console.log(status, "status");
 
       response.status = 201;
@@ -206,15 +206,15 @@ const runNextflow = async (
     stdin: "piped",
     stdout: "piped",
   });
-  const child = command.spawn();
+  // const child = command.spawn();
   // child.stdout.pipeTo(
   //   Deno.openSync("output.log", { write: true, create: true }).writable,
   // );
   const file = Deno.openSync("output.log", { write: true, create: true });
-  await Deno.copy(process.stdout, file);
+  await Deno.copy(command.stdout, file);
   file.close();
-  child.stdin.close();
-  const status = await child.status;
+  // child.stdin.close();
+  const status = await command.status();
   console.log(status);
 };
 
