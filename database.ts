@@ -1,5 +1,5 @@
 import { Pool } from "https://deno.land/x/postgres/mod.ts";
-import { dotEnvConfig } from './deps.ts';
+import dotEnvConfig from './deps.ts';
   
 dotEnvConfig({ export: true, safe: true });
 

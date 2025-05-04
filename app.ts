@@ -1,6 +1,6 @@
 import { Application, Context } from "https://deno.land/x/oak@v10.1.0/mod.ts";
 import router from "./routes.ts";
-import { dotEnvConfig } from "./deps.ts";
+import dotEnvConfig from "./deps.ts";
 import { dbPool } from "./database.ts";
 import { v4 } from "https://deno.land/std@0.97.0/uuid/mod.ts";
 

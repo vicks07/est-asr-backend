@@ -1,4 +1,4 @@
-import { dotEnvConfig } from './deps.ts';
+import dotEnvConfig from './deps.ts';
 dotEnvConfig({ export: true, safe: true });
 import createTable from './migrations/initial.ts'
 
