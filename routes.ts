@@ -10,6 +10,13 @@ import { deleteResults } from "./controllers/deleteResults.ts";
 
 const router = new Router();
 router
+    .get("/", async (req, res) => {
+        res.status = 200;
+        res.body = {
+            success: false,
+            msg: "Connected",
+        };
+    })
     .post("/upload", uploadFile)
     .get("/upload", getUploadForm)
     .get("/progress/:requestId", getWorkflowProgress)
