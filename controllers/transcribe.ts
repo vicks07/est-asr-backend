@@ -1,5 +1,5 @@
 import { RESULTS_DIR } from "../database.ts";
-import { db } from "../sqlite.ts";
+import db from "../sqlite.ts";
 const PIPELINE_DIR = Deno.env.get("PIPELINE_DIR");
 const NEXTFLOW_PATH =
   (Deno.env.get("NEXTFLOW_PATH")
