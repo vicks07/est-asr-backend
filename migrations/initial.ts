@@ -1,4 +1,4 @@
-export const createTable =
+const createTable =
 `
 CREATE TABLE IF NOT EXISTS workflows (
     run_id text,
@@ -21,3 +21,5 @@ CREATE TABLE IF NOT EXISTS workflows (
     result_sent boolean
 )
 `
+
+export default createTable;
