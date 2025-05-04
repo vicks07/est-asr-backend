@@ -123,6 +123,7 @@ const uploadFile = async ({
       }); */
       const command = Deno.run({
         cmd: [NEXTFLOW_PATH, ...command_args],
+        env: { NXF_VER: '22.10.0', ...Deno.env.toObject() },
         stdin: "piped",
         stdout: "piped",
         cwd: PIPELINE_DIR
@@ -203,6 +204,7 @@ const runNextflow = async (
   }); */
   const command = Deno.run({
     cmd: [Deno.execPath(), ...command_args],
+    env: { NXF_VER: '22.10.0', ...Deno.env.toObject() },
     stdin: "piped",
     stdout: "piped",
   });
