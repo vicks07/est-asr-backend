@@ -1,4 +1,4 @@
-import { DB as Database } from "git@github.com:vicks07/est-asr-backend.git";
+import { DB as Database } from "https://deno.land/x/sqlite@v3.1.1/mod.ts";
 
 const db = new Database("transcriptions.db");
 
