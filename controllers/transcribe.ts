@@ -213,7 +213,10 @@ const runNextflow = async (
   //   Deno.openSync("output.log", { write: true, create: true }).writable,
   // );
   const file = Deno.openSync("output.log", { write: true, create: true });
-  await Deno.copy(command.stdout, file);
+  if (command.stdout)
+    await Deno.copy(command.stdout, file);
+  else
+    console.error('No stdout to copy from!');
   file.close();
   // child.stdin.close();
   const status = await command.status();
