@@ -121,7 +121,7 @@ const uploadFile = async ({
         write: true,
         create: true,
       }); */
-      const command = new Deno.run({
+      const command = Deno.run({
         cmd: [NEXTFLOW_PATH, ...command_args],
         stdin: "piped",
         stdout: "piped",
@@ -201,7 +201,7 @@ const runNextflow = async (
     write: true,
     create: true,
   }); */
-  const command = new Deno.run({
+  const command = Deno.run({
     cmd: [Deno.execPath(), ...command_args],
     stdin: "piped",
     stdout: "piped",
